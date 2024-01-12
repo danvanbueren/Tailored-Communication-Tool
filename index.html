@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tailored Communication Tool</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/halfmoon@2.0.1/css/halfmoon.min.css" rel="stylesheet"
+          integrity="sha256-SsJizWSIG9JT9Qxbiy8xnYJfjCAkhEQ0hihxRn7jt2M=" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="px-5">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg" id="e_nav"
+         style="background-color: var(--bs-content-bg); border-bottom: var(--bs-border-width) solid var(--bs-content-border-color);">
+        <div class="container-fluid">
+            <button class="navbar-brand no-select btn btn-link text-decoration-none" id="button-brand"
+                    data-bs-toggle="modal"
+                    data-bs-target="#about-modal">📣 Tailored Communication Tool
+                <span class="badge text-bg-dark font-monospace fs-7 ms-2 lh-1" id="e_nav_e_version"></span>
+            </button>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-1">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+                <button class="btn btn-link text-decoration-none mx-1" id="e_nav_b_editCurrentView"
+                        data-bs-toggle="modal"
+                        data-bs-target="#edit-current-view-modal">Edit Current View
+                </button>
+                <button class="btn btn-primary mx-1" id="e_nav_b_switchView" data-bs-toggle="modal"
+                        data-bs-target="#change-view-modal">Switch View
+                </button>
+                <button class="btn btn-outline-success mx-1" id="button-save-load" data-bs-toggle="modal"
+                        data-bs-target="#save-load-modal">Save / Load
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BUTTON VIEW -->
+    <div class="row" id="e_mainDiv"></div>
+</div>
+
+<!-- MODAL: Switch View -->
+<div class="modal fade" id="change-view-modal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-title-1">Switch View</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="m_switchView_b_close"></button>
+                </div>
+                <div class="modal-body" id="modal-change-view-target">
+                    <div class="accordion accordion-flush" id="m_switchView_e_accordion"></div>
+                    <div class="input-group input-group-lg mt-4">
+                        <input class="form-control" placeholder="View Name" aria-label="View Name"
+                               aria-describedby="m_switchView_b_submit" id="m_switchView_i_addNewView">
+                        <button type="button" class="btn" id="m_switchView_b_submit" disabled>Add View</button>
+                    </div>
+                    <small class="no-select pt-3 text-success-emphasis" id="m_switchView_i_addNewView_v" hidden></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Edit Current View -->
+<div class="modal fade" id="edit-current-view-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-title-2">Edit Current View</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="m_editCurrentView_e_body">
+
+                    <div class="input-group input-group-lg my-2" id="m_editCurrentView_e_inputGroup1">
+                        <label class="input-group-text" id="m_editCurrentView_e_inputGroup1_e_label">1. </label>
+                        <input type="text" class="form-control" placeholder="Button text" aria-label="Button text" id="m_editCurrentView_e_inputGroup1_i_inputButtonText">
+                        <span class="input-group-text"> - </span>
+                        <select class="form-select" aria-label="Button color" id="m_editCurrentView_e_inputGroup1_i_selectColor">
+                            <option value="" selected disabled>Choose color</option>
+                            <option value="red">Red</option>
+                            <option value="orange">Orange</option>
+                            <option value="yellow">Yellow</option>
+                            <option value="green">Green</option>
+                            <option value="teal">Teal</option>
+                            <option value="blue">Blue</option>
+                            <option value="purple">Purple</option>
+                            <option value="pink">Pink</option>
+                        </select>
+                        <button class="btn btn-secondary" id="m_editCurrentView_e_inputGroup1_b_moveUp">⬆</button>
+                        <button class="btn btn-secondary" id="m_editCurrentView_e_inputGroup1_b_moveDown">⬇</button>
+                        <button class="btn btn-danger" id="m_editCurrentView_e_inputGroup1_b_delete">🗑</button>
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-between mt-4">
+                        <button type="button" class="btn btn-primary btn-lg" id="m_editCurrentView_b_addNewButton">Add New Button</button>
+                        <button type="button" class="btn btn-primary btn-lg" id="m_editCurrentView_b_apply">Apply</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: About -->
+<div class="modal fade" id="about-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-title-3">
+                        Tailored Communication Tool
+                        <br/>
+                        <small class="text-body-secondary fw-normal">An accessibility solution</small>
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 pb-3 border-bottom">
+                        <h6>About This App</h6>
+                        <p><a class="fw-bold" href="https://github.com/danvanbueren/Tailored-Communication-Tool" target="_blank"
+                              rel="noopener noreferrer">Source Repo</a> (<a
+                                href="https://github.com/danvanbueren/Tailored-Communication-Tool/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT
+                            License</a>)</p>
+                        <p>Build Version: <span class="badge text-bg-dark font-monospace"
+                                                id="m_about_e_version"></span></p>
+                        <br>
+                        <h6>Dependencies</h6>
+                        <p><a class="fw-bold" href="https://www.gethalfmoon.com/" target="_blank"
+                              rel="noopener noreferrer">Halfmoon</a> (<a href="https://www.gethalfmoon.com/license/"
+                                                                         target="_blank" rel="noopener noreferrer">MIT
+                            License</a>)</p>
+                        <p><a class="fw-bold" href="https://getbootstrap.com/" target="_blank"
+                              rel="noopener noreferrer">Bootstrap</a> (<a
+                                href="https://github.com/twbs/bootstrap/blob/main/LICENSE" target="_blank"
+                                rel="noopener noreferrer">MIT License</a>)</p>
+                    </div>
+                    <div class="text-center text-body-secondary">
+                        Made with ❤️ by <a href="https://github.com/danvanbueren" target="_blank"
+                                           rel="noopener noreferrer">Dan Van Bueren</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL: Save / Load -->
+<div class="modal fade" id="save-load-modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modal-title-4">Save / Load</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            id="m_saveLoad_b_close"></button>
+                </div>
+                <div class="modal-body" id="modal-save-load-target">
+                    <div class="pb-3">
+                        <h6>
+                            Save Current Configuration
+                            <br/>
+                            <small class="text-body-secondary fw-normal">The file will be saved in your Downloads
+                                folder.</small>
+                        </h6>
+
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control font-monospace" placeholder="Name (Optional)"
+                                   aria-label="Name (Optional)" id="m_saveLoad_i_downloadConfig">
+                            <span class="input-group-text text-bg-dark font-monospace">.tctconfig</span>
+                            <button class="btn btn-primary" id="m_saveLoad_b_downloadConfig">Download</button>
+                        </div>
+                    </div>
+                    <div class="py-3 border-top">
+                        <h6>
+                            Load Previous Configuration
+                            <br/>
+                            <small class="text-body-secondary fw-normal">Choose a file with the extension: <span
+                                    class="badge text-bg-dark font-monospace">.tctconfig</span></small>
+                        </h6>
+
+                        <div class="input-group">
+                            <input type="file" accept=".tctconfig" class="form-control"
+                                   id="m_saveLoad_i_uploadConfig" aria-label="Upload" required>
+                            <button class="input-group-text btn" id="m_saveLoad_b_uploadConfig"
+                                    disabled>Apply
+                            </button>
+                        </div>
+                        <small class="no-select pt-3 text-success-emphasis" id="m_saveLoad_i_uploadConfig_v"
+                               hidden></small>
+
+                    </div>
+                    <div class="pt-3 border-top">
+                        <h6>
+                            Abandon Current Session
+                            <br/>
+                            <small class="text-body-secondary fw-normal">WARNING: This will destroy data without
+                                saving!</small>
+                        </h6>
+                        <button type="button" class="btn btn-outline-warning btn-sm mt-1"
+                                id="m_saveLoad_b_loadDefault">Load Default
+                            Configuration
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TOAST: Config Load Success -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast-upload-success" class="toast bg-success" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-white">✅ Success!</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            You have successfully loaded the saved configuration!
+        </div>
+    </div>
+</div>
+
+<!-- TOAST: Config Load Fail -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toast-upload-failed" class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-white">⚠️ Failed!</strong>
+            <small>Just now</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            The configuration failed to load!
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<script src="logic.js"></script>
+
+</body>
+</html>

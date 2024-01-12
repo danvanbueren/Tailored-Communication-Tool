@@ -1,0 +1,129 @@
+.hb20 {
+    border: 1px solid transparent;
+}
+
+.hb20:hover {
+    border: 20px solid #000000;
+}
+
+.ab {
+    font-size: 110px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: black;
+}
+
+.ac {
+    font-size: 80px;
+    font-weight: bold;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+.red-btn {
+    background-color: rgb(204, 0, 0);
+}
+
+.red-btn:hover {
+    background-color: rgb(153, 0, 0);
+}
+
+.orange-btn {
+    background-color: rgb(204, 102, 0);
+}
+
+.orange-btn:hover {
+    background-color: rgb(153, 76, 0);
+}
+
+.yellow-btn {
+    background-color: rgb(204, 204, 0);
+}
+
+.yellow-btn:hover {
+    background-color: rgb(153, 153, 0);
+}
+
+.green-btn {
+    background-color: rgb(0, 204, 0);
+}
+
+.green-btn:hover {
+    background-color: rgb(0, 153, 0);
+}
+
+.teal-btn {
+    background-color: rgb(0, 204, 204);
+}
+
+.teal-btn:hover {
+    background-color: rgb(0, 153, 153);
+}
+
+.blue-btn {
+    background-color: rgb(0, 0, 204);
+}
+
+.blue-btn:hover {
+    background-color: rgb(0, 0, 153);
+}
+
+.purple-btn {
+    background-color: rgb(102, 0, 204);
+}
+
+.purple-btn:hover {
+    background-color: rgb(76, 0, 153);
+}
+
+.pink-btn {
+    background-color: rgb(204, 0, 204);
+}
+
+.pink-btn:hover {
+    background-color: rgb(153, 0, 153);
+}
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+.fs-7 {
+    font-size: 12px;
+}
+
+.clickTooShortBump {
+    animation-name: wiggleAnimation;
+    animation-duration: 200ms;
+}
+
+.startClickGrow {
+    animation-name: growAnimation;
+    animation-duration: 1500ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes growAnimation {
+    0% {transform: scale(1, 1);}
+    95% {transform: scale(1.2, 1.2); background-color: rgb(248, 216, 58)
+    }
+    100% {transform: scale(1, 1); background-color: rgb(65, 200, 121)
+    }
+}
+
+@keyframes wiggleAnimation {
+    0% {transform: rotate(0deg);}
+    10% {transform: rotate(2deg);}
+    30% {transform: rotate(-5deg);}
+    50% {transform: rotate(5deg);}
+    70% {transform: rotate(-5deg);}
+    90% {transform: rotate(2deg);}
+    100% {transform: rotate(0deg);}
+}
