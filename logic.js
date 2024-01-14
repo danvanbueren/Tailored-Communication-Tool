@@ -14,6 +14,10 @@ function downloadFile(filename, text) {
 
 function updateButtonHTML(HTML) {
     e_mainDiv.innerHTML = HTML;
+    fitty('#btnTxt', {
+        minSize: 12,
+        maxSize: 100,
+    });
 }
 
 function textToSpeech(message) {
@@ -28,31 +32,27 @@ function textToSpeech(message) {
 
 function buttonToHTML(color, text, numOfButtons) {
     let colSize = 12;
-    let padSize = 'p-3';
+    let padSize = '';
     let fontSize = 'ab';
     let btnHeight = (availBtnHeight / numOfButtons) * 0.85;
 
     if (numOfButtons > 4) {
         colSize = 6;
-        padSize = 'p-2';
         btnHeight = (availBtnHeight / ((numOfButtons + numOfButtons % 2) / 2)) * 0.85;
+        fontSize = 'ac';
     }
 
     if (numOfButtons > 8) {
         colSize = 4;
-        padSize = '';
         if (numOfButtons % 3 === 0) {
             btnHeight = (availBtnHeight / (numOfButtons / 3)) * 0.85;
         } else {
             btnHeight = (availBtnHeight / ((numOfButtons + 3 - numOfButtons % 3) / 3)) * 0.85;
         }
     }
-
-    if (numOfButtons > 15) {
-        fontSize = 'ac';
-    }
-
-    if (text.length > 15) {
+    if (window.innerWidth < 1000) {
+        colSize = 12;
+        btnHeight = (availBtnHeight / numOfButtons) * 0.85;
         fontSize = 'ac';
     }
 
@@ -60,7 +60,7 @@ function buttonToHTML(color, text, numOfButtons) {
         '<div class="col-' + colSize + ' p-2" style="height: ' + btnHeight + 'px">' +
         '<button type="button" class="btn btn-lg ' + color + '-btn w-100 h-100 ' + padSize + ' m-2 hb20 ' + fontSize + '" onclick="' +
         'textToSpeech(\'' + text.replace('\'', '\\\'') + '\');' +
-        '">' + text + '' +
+        '"><a id="btnTxt">' + text + '</a>' +
         '</button>' +
         '</div>';
 }
@@ -459,7 +459,7 @@ class Controller {
 ========== VARIABLES ========== VARIABLES ========== VARIABLES ========== VARIABLES ========== VARIABLES ===============
 */
 
-const BUILD_VERSION = "24Q1_0113A";
+const BUILD_VERSION = "24Q1_0114A";
 
 const e_mainDiv = document.getElementById("e_mainDiv");
 const e_nav = document.getElementById("e_nav");
@@ -661,3 +661,7 @@ function m_saveLoad_b_loadDefault_clickTimerEnd() {
         m_saveLoad_b_loadDefault.classList.add('clickTooShortBump');
     }
 }
+
+onresize = (event) => {
+    updateButtonHTML(controller.fromViewNameGetInnerHTML(mostRecentView));
+};
